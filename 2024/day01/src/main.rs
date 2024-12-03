@@ -23,7 +23,7 @@ fn load_input(file_path: &str) -> io::Result<(Vec<i32>, Vec<i32>)> {
     Ok((left_list, right_list))
 }
 
-fn part1() -> io::Result<()> {
+fn part_one() -> io::Result<()> {
     let (mut left_list, mut right_list) = load_input("./input.txt")?;
 
     left_list.sort();
@@ -39,7 +39,7 @@ fn part1() -> io::Result<()> {
     Ok(())
 }
 
-fn part2() -> io::Result<()> {
+fn part_two() -> io::Result<()> {
     let (left_list, right_list) = load_input("./input.txt")?;
 
     let right_count = right_list.iter().fold(HashMap::new(), |mut acc, &num| {
@@ -57,8 +57,8 @@ fn part2() -> io::Result<()> {
 }
 
 fn main() -> io::Result<()> {
-    part1()?;
-    part2()?;
+    part_one()?;
+    part_two()?;
 
     Ok(())
 }
