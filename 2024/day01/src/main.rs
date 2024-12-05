@@ -1,18 +1,13 @@
-use std::fs::File;
-use std::io::{self, BufRead};
-use std::path::Path;
+use std::fs;
+use std::io;
 use std::collections::HashMap;
 
 fn load_input(file_path: &str) -> io::Result<(Vec<i32>, Vec<i32>)> {
-    let path = Path::new(file_path);
-    let file = File::open(&path)?;
-    let reader = io::BufReader::new(file);
-
+    let content = fs::read_to_string(file_path)?;
     let mut left_list = Vec::new();
     let mut right_list = Vec::new();
 
-    for line in reader.lines() {
-        let line = line?;
+    for line in content.lines() {
         let parts: Vec<&str> = line.split_whitespace().collect();
         if parts.len() == 2 {
             left_list.push(parts[0].parse::<i32>().unwrap());
